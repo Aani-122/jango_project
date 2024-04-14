@@ -1,0 +1,21 @@
+---
+name: Checks
+
+on: [push]
+
+jobs:
+  test-lint:
+    name: Test and Lint
+    runs-on: ubantu-20.04
+    steps:
+      - name: LOgin to Docker Hub
+        uses: docker/login=actin@v1
+        with:
+          username: ${{ seccreats.DOCKER_USER }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Test
+        run: docker-compose run --rm app sh -c "python manage.py test"
+      - anme: Lint
+        run: docker-compose run --rm app sh -c "flake8"  
