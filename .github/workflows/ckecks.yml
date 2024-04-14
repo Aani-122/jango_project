@@ -11,7 +11,7 @@ jobs:
       - name: LOgin to Docker Hub
         uses: docker/login=actin@v1
         with:
-          username: ${{ seccreats.DOCKER_USER }}
+          username: ${{ secrets.DOCKER_USER }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Checkout
         uses: actions/checkout@v2
